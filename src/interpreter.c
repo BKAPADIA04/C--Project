@@ -51,37 +51,45 @@ void execute_c_minus_minus(char* input_code){
                             j++;
                         }
                         v1 = get_variable_value(v1_name);
+                        // printf("v1 = %d\n",v1);
                     }
                 }
                 else if (m==3)
                 {
                     op = code;
+                    // printf("%s\n",op);
                 }
                 else if (m==4)
                 {
-                    int j = 1;
+                    int j = 0;
+                    // printf("%c\n",code[j]);
                     if (isdigit(code[j]))
                     {
                         char v2_val[100] = "";
-                        while (code[j] != '\0')
+                        while (code[j] != ')')
                         {
-                            v2_val[j-1] = code[j];
+                            v2_val[j] = code[j];
                             j++;
+                            // printf("%s",v2_val);
                         }
                         v2 = atoi(v2_val);
+
+                        // printf("v2 = %d\n",v2);
                     }
                     else
                     {
                         char v2_name[100] = "";
-                        while (code[j] != ')')
+                        while (code[j] != '\0')
                         {
                             v2_name[j-1] = code[j];
                             j++;
                         }
                         v2 = get_variable_value(v2_name);
+                        // printf("v2 = %d\n",v2);
                     }
                 }
                 code = strtok(NULL, " ");
+                // printf("%s\n",code);
             }
             int result = evaluate_condition(v1, op, v2);
             
